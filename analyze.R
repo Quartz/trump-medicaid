@@ -24,7 +24,9 @@ merged <- election %>%
 
 write_csv(merged, 'src/data/data.csv')
 
-quantile(merged$trump_pct, c(0.33, 0.66))
-quantile(merged$eligible, c(0.33, 0.66), na.rm = TRUE)
+quantile(merged$trump_pct, c(0.333, 0.666))
+quantile(merged$eligible, c(0.333, 0.666), na.rm = TRUE)
+
+
 
 
