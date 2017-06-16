@@ -8,7 +8,7 @@ function configure(width) {
 
     return $.extend(true, output, {
         'projection': d3.geo.albersUsa(),
-        'scale_factor': 1.0,
+        'scale_factor': 1.2,
         'graticules': false,
         'scale_bar_distance': null,
         'paths': [
