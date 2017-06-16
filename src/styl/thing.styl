@@ -1,0 +1,192 @@
+@import 'maps/base'
+
+$low_low = #dddddd
+$low_mid = #7bb3d1
+$low_high = #016eae
+$mid_low = #dd7ca8
+$mid_mid = #8d6c8f
+$mid_high = #4a4779
+$high_low = #cc0024
+$high_mid = #8a274a
+$high_high = #4b264d
+
+// .title
+// 	font 24px/32px $qz-sans-bold
+// 	font-style bold
+// 	color $qz-header-black
+
+h2
+	text-align: center
+	padding-bottom 15px
+
+table.key
+	width 320px
+	margin 0 auto
+	font-family $qz-sans
+	font-size 14px
+	color $qz-chart-axis-text
+
+	td
+		width 60px
+
+		&.y-label
+			text-align right
+			padding-right 5px
+
+		&.cell
+			border-color $qz-map-land-stroke
+			border-width 1px
+
+			&.low_low
+				background-color $low_low
+
+			&.low_mid
+				background-color $low_mid
+
+			&.low_high
+				background-color $low_high
+
+			&.mid_low
+				background-color $mid_low
+
+			&.mid_mid
+				background-color $mid_mid
+
+			&.mid_high
+				background-color $mid_high
+
+			&.high_low
+				background-color $high_low
+
+			&.high_mid
+				background-color $high_mid
+
+			&.high_high
+				background-color $high_high
+
+.legend
+	font-family $qz-sans
+	fill $qz-chart-axis-text
+	font-size 14px
+
+	rect
+		stroke $qz-map-land-stroke
+		stroke-width 0.5px
+
+		&.low_low
+			fill $low_low
+
+		&.low_mid
+			fill $low_mid
+
+		&.low_high
+			fill $low_high
+
+		&.mid_low
+			fill $mid_low
+
+		&.mid_mid
+			fill $mid_mid
+
+		&.mid_high
+			fill $mid_high
+
+		&.high_low
+			fill $high_low
+
+		&.high_mid
+			fill $high_mid
+
+		&.high_high
+			fill $high_high
+
+// Paths
+.paths
+	.states path
+		fill none
+		stroke black
+		stroke-width 1.25px
+
+	.counties path
+		fill $qz-map-land-fill
+		stroke $qz-map-land-stroke
+		stroke-width 0.25px
+
+		&.low_low
+			fill $low_low
+
+		&.low_mid
+			fill $low_mid
+
+		&.low_high
+			fill $low_high
+
+		&.mid_low
+			fill $mid_low
+
+		&.mid_mid
+			fill $mid_mid
+
+		&.mid_high
+			fill $mid_high
+
+		&.high_low
+			fill $high_low
+
+		&.high_mid
+			fill $high_mid
+
+		&.high_high
+			fill $high_high
+
+		&.nodata
+			fill #666
+
+// Labels
+.labels
+	text
+		fill $qz-gray-2
+		font-size 80%
+		text-anchor start
+		alignment-baseline: middle
+		-webkit-font-smoothing antialiased
+
+.footer
+	margin 0
+	padding 0
+	font-family $qz-sans
+	color $qz-gray-2
+	font-size 14px
+	width: 100%
+
+	div
+		float: left
+
+		&.left
+			width: 50%
+
+			div
+				text-align: left
+				padding-left: 5px
+
+		&.right
+			width: 50%
+
+			div
+				text-align: right
+
+	&:after
+		content: ""
+		display: table
+		clear: both
+
+@media screen and (max-width $width-mobile)
+	.title
+		font 18px/24px $qz-sans-bold;
+
+	.paths
+		.states path
+			stroke-width 0.4px
+
+		.counties path
+			stroke-width 0.15px
