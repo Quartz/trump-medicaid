@@ -98,10 +98,11 @@ var renderMap = function(typeConfig, instanceConfig) {
      * Setup
      */
     var topMargin = 0;
+    var bottomMargin = 20;
 
     // Calculate actual map dimensions
     var mapWidth = instanceConfig['width'];
-    var mapHeight = Math.ceil(instanceConfig['width'] / typeConfig['aspect_ratio']) + topMargin;
+    var mapHeight = Math.ceil(instanceConfig['width'] / typeConfig['aspect_ratio']) + topMargin + bottomMargin;
 
     // Clear existing graphic (for redraw)
     var containerElement = d3.select(instanceConfig['container']);
@@ -188,7 +189,7 @@ var renderMap = function(typeConfig, instanceConfig) {
                     eligibleScale = 'mid';
                 }
 
-                return (trumpScale + '_' + eligibleScale);
+                return (eligibleScale + '_' + trumpScale);
             });
 
     pathsElement.append('g')

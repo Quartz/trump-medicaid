@@ -1,14 +1,15 @@
 @import 'maps/base'
 
-$low_low = #dddddd
-$low_mid = #7bb3d1
-$low_high = #016eae
-$mid_low = #dd7ca8
-$mid_mid = #8d6c8f
-$mid_high = #4a4779
-$high_low = #cc0024
-$high_mid = #8a274a
-$high_high = #4b264d
+$low_low = #e8e8e8
+$low_mid = #ace4e4
+$low_high = #5ac8c8
+$mid_low = #dfb0d6
+$mid_mid = #a5add3
+$mid_high = #5698b9
+$high_low = #be64ac
+$high_mid = #8c62aa
+$high_high = #3b4994
+$nodata = #333
 
 h2
 	text-align: center
@@ -103,7 +104,7 @@ table.key
 			fill $high_high
 
 		&.nodata
-			fill #666
+			fill $nodata
 
 // Labels
 .labels
@@ -126,17 +127,18 @@ table.key
 		float: left
 
 		&.left
-			width: 50%
+			width: 30%
 
 			div
 				text-align: left
 				padding-left: 5px
 
 		&.right
-			width: 50%
+			width: 70%
 
 			div
 				text-align: right
+				padding-right 5px
 
 	&:after
 		content: ""
