@@ -9,7 +9,7 @@ election <- read_csv('data/2016_0_0_2.csv', skip = 1) %>%
 medicaid <- read_csv('data/ACS_15_5YR_C27007/ACS_15_5YR_C27007.csv') %>%
   slice(2:n()) %>%
   transmute(
-    geoid = `GEO.id`,
+    fips = as.numeric(str_sub(`GEO.id`, -5)),
     pop = as.numeric(HD01_VD01),
     medicaid = 
       as.numeric(HD01_VD04) + 
@@ -18,7 +18,7 @@ medicaid <- read_csv('data/ACS_15_5YR_C27007/ACS_15_5YR_C27007.csv') %>%
       as.numeric(HD01_VD14) +
       as.numeric(HD01_VD17) +
       as.numeric(HD01_VD20),
-    no_medicaid = 
+    no_medicaid =
       as.numeric(HD01_VD05) +
       as.numeric(HD01_VD08) +
       as.numeric(HD01_VD11) +
@@ -26,27 +26,16 @@ medicaid <- read_csv('data/ACS_15_5YR_C27007/ACS_15_5YR_C27007.csv') %>%
       as.numeric(HD01_VD18) +
       as.numeric(HD01_VD21),
     medicaid_pct = medicaid / pop * 100
-  )
-
-medicaid <- read_excel('data/State_County_All_Table.xlsx', sheet = 'State_county 2015', skip = 1) %>%
-  select(
-    fips = `State and County FIPS Code`,
-    eligible = `Percent Eligible for Medicaid`
   ) %>%
-  filter(
-    !is.na(fips)
-  ) %>%
-  mutate(
-    eligible = as.numeric(ifelse(eligible == '*', NA, str_sub(eligible, 1, -3)))
-  )
+  select(fips, medicaid_pct)
 
 merged <- election %>%
-  left_join(medicaid)
+  left_join(medicaid) 
 
 write_csv(merged, 'src/data/data.csv')
 
 quantile(merged$trump_pct, c(0.333, 0.666))
-quantile(merged$eligible, c(0.333, 0.666), na.rm = TRUE)
+quantile(merged$medicaid_pct, c(0.333, 0.666), na.rm = TRUE)
 
 
 
