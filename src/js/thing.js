@@ -170,12 +170,12 @@ var renderMap = function(typeConfig, instanceConfig) {
                     return 'nodata';
                 }
 
-                if (!data['eligible']) {
+                if (!data['medicaid_pct']) {
                     return 'nodata';
                 }
 
                 var trumpScale = 'low';
-                var eligibleScale = 'low';
+                var medicaidScale = 'low';
 
                 if (data['trump_pct'] >= 72.03543) {
                     trumpScale = 'high';
@@ -183,13 +183,13 @@ var renderMap = function(typeConfig, instanceConfig) {
                     trumpScale = 'mid';
                 }
 
-                if (data['eligible'] >= 22.9000) {
-                    eligibleScale = 'high';
-                } else if (data['eligible'] >= 15.6561) {
-                    eligibleScale = 'mid';
+                if (data['medicaid_pct'] >= 21.40073) {
+                    medicaidScale = 'high';
+                } else if (data['medicaid_pct'] >= 15.75415) {
+                    medicaidScale = 'mid';
                 }
 
-                return (eligibleScale + '_' + trumpScale);
+                return (medicaidScale + '_' + trumpScale);
             });
 
     pathsElement.append('g')
